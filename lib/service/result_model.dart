@@ -10,16 +10,16 @@ String npkResultToJson(NpkResult data) => json.encode(data.toJson());
 
 class NpkResult {
   NpkResult({
-    required this.weight,
-    required this.rate,
-    required this.manures,
-    required this.mix,
-    required this.total,
+    this.weight = '',
+    this.rate = '',
+    this.mix = 0.0,
+    this.total = 0.0,
+    required this.manures
   });
 
   String weight;
   String rate;
-  List<Manure> manures;
+  late List<Manure> manures;
   double mix;
   double total;
 
@@ -42,9 +42,9 @@ class NpkResult {
 
 class Manure {
   Manure({
-    required this.code,
-    required this.name,
-    required this.value,
+     this.code = '',
+     this.name = '',
+     this.value = 0.0,
   });
 
   String code;

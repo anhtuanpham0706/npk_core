@@ -14,7 +14,7 @@ class NpkResultPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Kết quả trộn phân',style: TextStyle(fontSize: 19,color: Colors.white),),
-        backgroundColor: Colors.green,
+        backgroundColor: const Color(0xFF0E986F),
       ),
       body: Container(
         padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
@@ -89,10 +89,10 @@ class NpkResultPage extends StatelessWidget {
                 child: Container(
                   width: 150,
                   height: 40,
-                  child: Center(child: Text("Xong",style: TextStyle(fontSize: 15,color: Colors.white,fontWeight: FontWeight.bold),)),
-                  decoration: BoxDecoration(
+                  child: const Center(child: Text("Xong",style: TextStyle(fontSize: 15,color: Colors.white,fontWeight: FontWeight.bold),)),
+                  decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(25)),
-                      color: Colors.green
+                      color: Color(0xFF0E986F)
                   ),
                 ),
               ),

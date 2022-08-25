@@ -1,7 +1,7 @@
 name: npk_core
 description: The core NPK for hainong flutter project.
-version: 0.0.2+1
-homepage:
+version: 0.0.2+4
+homepage: https://github.com/anhtuanpham0706/npk_core
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
@@ -10,14 +10,14 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  http: ^0.13.2
-  flutter_bloc: ^8.0.0
+  http: ^0.13.4
+  flutter_bloc: ^8.0.1
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^1.0.0
+  flutter_lints: ^1.0.4
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

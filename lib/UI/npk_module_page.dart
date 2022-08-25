@@ -27,7 +27,8 @@ class _NpkModulePageState extends State<NpkModulePage> {
   TextEditingController K_crt = TextEditingController();
 
 
-   void initState() {
+   @override
+  void initState() {
      _npk_bloc.add(LoadListNpkEvent(widget.url));
      super.initState();
      _npk_bloc.stream.listen((state) {
@@ -35,18 +36,23 @@ class _NpkModulePageState extends State<NpkModulePage> {
          list.addAll(state.list);
        } else if(state is SendInfoNpkState){
          result = state.result;
-           Util_Npk.goToNextPage(context, NpkResultPage(result), null);
+          if (result != null){
+            Util_Npk.goToNextPage(context, NpkResultPage(result), _lear_result);
+          }
        }
      });
    }
 
+  @override
   dispose() {
     _npk_bloc.close();
     super.dispose();
   }
 
-   void _lear_result(){
-     result;
+
+   void _lear_result(value){
+     result = NpkResult(manures: []);
+     list_npk.clear();
    }
 
 
@@ -55,7 +61,7 @@ class _NpkModulePageState extends State<NpkModulePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.green,
+        backgroundColor: const Color(0xFF0E986F),
         title: Text('Phối trộn phân bón NPK',style: TextStyle(color: Colors.white,fontSize: 18),),
       ),
       body: Padding(
@@ -77,6 +83,7 @@ class _NpkModulePageState extends State<NpkModulePage> {
               Container(
                 padding: EdgeInsets.fromLTRB(20, 0, 20, 10),
                 child: TextField(
+                  textAlign: TextAlign.right,
                   style: TextStyle(color: Colors.black, fontSize: 13),
                   keyboardType: TextInputType.number,
                   controller: weight_crt,
@@ -109,6 +116,7 @@ class _NpkModulePageState extends State<NpkModulePage> {
                         height: 60,
                         padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
                         child: TextField(
+                          textAlign: TextAlign.center,
                           style: TextStyle(color: Colors.black, fontSize: 13),
                           keyboardType: TextInputType.number,
                           controller: N_crt,
@@ -129,10 +137,11 @@ class _NpkModulePageState extends State<NpkModulePage> {
                         height: 60,
                         padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
                         child: TextField(
+                          textAlign: TextAlign.center,
                           style: TextStyle(color: Colors.black, fontSize: 13),
                           keyboardType: TextInputType.number,
                           controller: P_crt,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             border: OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.black, width: 0.5)),
                             contentPadding: EdgeInsets.fromLTRB(10, 0, 30, 0),
@@ -149,10 +158,11 @@ class _NpkModulePageState extends State<NpkModulePage> {
                         height: 60,
                         padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
                         child: TextField(
+                          textAlign: TextAlign.center,
                           style: TextStyle(color: Colors.black, fontSize: 13),
                           keyboardType: TextInputType.number,
                           controller: K_crt,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             border: OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.black, width: 0.5)),
                             contentPadding: EdgeInsets.fromLTRB(10, 0, 30, 0),
@@ -177,9 +187,9 @@ class _NpkModulePageState extends State<NpkModulePage> {
                         width: double.infinity,
                         height: 40,
                         padding: EdgeInsets.fromLTRB(10, 10, 0, 10),
-                        child: Text("Chọn phân để trộn",
+                        child: const Text("Chọn phân để trộn",
                           style: TextStyle(fontSize: 15,color: Colors.black),),
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             borderRadius:  BorderRadius.all(Radius.circular(5)),
                           color: Colors.black26
                         ),
@@ -271,9 +281,9 @@ class _NpkModulePageState extends State<NpkModulePage> {
                       width: 160,
                       height: 45,
                       child: Center(child: Text("Xem kết quả",style: TextStyle(fontSize: 15,color: Colors.white),)),
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(25)),
-                          color: Colors.green
+                          color: Color(0xFF0E986F)
                       ),
                     ),
                   ),
